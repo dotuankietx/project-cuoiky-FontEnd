@@ -1,0 +1,126 @@
+<div id="wrapper">
+
+  <!-- Sidebar -->
+      <app-side-bar></app-side-bar>
+
+  
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+          <!-- Topbar -->
+          <!-- Topbar -->
+          <app-nav-bar></app-nav-bar>
+          <!-- End of Topbar -->
+          
+          <!-- Begin Page Content -->
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+              <button (click)='add()' type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" ><i
+                  class="fas fa-download fa-sm text-white-50"></i> Add new Item</button>
+
+          </div>
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Category</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Priority</th>
+                  <th scope="col">Product Status</th>
+                  <th scope="col">Detail</th>
+                  <th scope="col">Option</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of this.items | async">
+                  <td>{{item.id}}</td>
+                  <td>image</td>
+                  <td>{{item.name}}</td>
+                  <td>{{item.category}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.price}}</td>
+          
+                  <!-- priority -->
+                  <td *ngIf="item.priority">Best Seller</td>
+                  <td *ngIf="!item.priority"></td>
+          
+                  <!-- product status -->
+                  <td *ngIf="item.status && item.quantity != 0"><i class="bi bi-check-circle-fill"></i></td>
+                  <td *ngIf="!item.status && item.quantity == 0"><i class="bi bi-x-circle-fill"></i></td>
+          
+                  <td class="td_btn"><button class="btn detail-btn"><i class="bi bi-info-circle-fill"></i></button></td>
+                  <!--option column-->
+                  <td>
+                      <button type="button" class="btn btn-primary">Update</button>
+                      <button type="button" class="btn btn-danger" *ngIf="item.status == false" >Delete</button>
+                  </td>
+                </tr>
+          
+                <!-- thiếu pagination -->
+              </tbody>
+            </table>
+          <ul>
+              <li>123</li>
+              <i class="bi bi-check-circle-fill"></i>
+              <li *ngFor="let item of items | async">
+                {{ item.name }}
+              </li>
+            </ul>
+          <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <app-footer></app-footer>
+      <!-- End of Footer -->
+
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <div class="input-group">
+          <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{ closeResult }}</pre> -->
